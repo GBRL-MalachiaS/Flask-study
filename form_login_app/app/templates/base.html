@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Meu Site{% endblock %}</title>
+</head>
+
+<body>
+    <header>
+        <h1>Bem-vindo ao meu site com Flask!</h1>
+        <hr>
+    </header>
+
+    <main>
+        {# Bloco para renderizar mensagens do flash #}
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <hr>
+        <p>&copy; 2025 - Meu Projeto</p>
+    </footer>
+</body>
+
+</html>
