@@ -1,4 +1,5 @@
-from flask import render_template
+from flask import render_template, flash, redirect, url_for
+from app.forms import FromContato
 from app import app
 
 
@@ -13,9 +14,17 @@ def ola_mundo():
 def sobre():
     return '<h1>Sobre este projeto</h1>\n<p>Este é meu aprendizado de rotas e retornos de função dentro do flask</p>'
 
-@app.route('/contato')
+@app.route('/contato', methods=['GET', 'POST'])
 def contato():
-    return '<h1>Informações Contato</h1>\n<p>Você pode entrar em contato pelo e-mail: ficticio@gmail.com'
+    form = FromContato()
+    if form.validate_on_submit():
+        nome_do_usuario = form.nome.data
+        email_do_usuario = form.email.data
+        flash(f'Contato enviado por {nome_do_usuario} com o email {email_do_usuario}!')
+        return redirect(url_for('ola_mundo'))
+    
+    return render_template('contato.html', titulo='Entre em Contato', form=form)
+
 
 @app.route('/saudacao/<nome>')
 def saudacao(nome):

@@ -9,4 +9,8 @@ app = Flask(__name__)
 # 2. Importa as rotas DEPOIS da criação da instância do app
 #    Isso é crucial para evitar "importações circulares". O arquivo routes.py
 #    precisará importar a variável 'app' que acabamos de criar aqui.
+
+# 3. Chave secreta para proteger sessões
+app.config['SECRET_KEY'] = 'Lorena@2024'
+
 from app import routes
