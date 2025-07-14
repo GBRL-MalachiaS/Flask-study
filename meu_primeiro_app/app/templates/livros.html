@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Página Inicial{% endblock %}
+
+{% block content %}
+    <h1>Lista de livros</h1>
+    <ul>
+        {% for livro in livros %}
+            <li></li>
+            <ul>
+                {% for infor, dado in livro.items() %}
+                    <li>{{infor}}:{{dado}}</li>
+                {% endfor %}
+            </ul>    
+        {% endfor %}
+    </ul>
+{% endblock %}
