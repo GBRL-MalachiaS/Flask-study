@@ -18,10 +18,11 @@ def login():
 
         if login in usuarios:
             if usuarios[login.lower()] == senha:
-                flash("Login Realizado")
+                flash(
+                    f'Login solicitado para o usuário {form.usuario.data}, Lembrar-me={form.lembrar_me.data}')
                 return render_template('index.html')
             else:
-                flash("Login Invalido! ")
+                flash("Usuário ou senha inválidos!")
                 return render_template("login.html", form=form)
 
     return render_template('login.html', titulo='Login', form=form)

@@ -1,21 +1,30 @@
 {% extends 'base.html' %}
-
-{% block title %}
-  Login
-{% endblock %}
-
+{% block title %}Login{% endblock %}
 {% block content %}
-  <h1>Entre em Contato</h1>
-  <form action="" method="post" novalidate>
+<div class="container mt-5">
+  <h2>Login</h2>
+  <form method="POST" class="needs-validation" novalidate>
+    {{ form.hidden_tag() }}
 
-    <p>{{ form.hidden_tag() }}
-      {{ form.usuario.label }}
-      {{ form.usuario(size=40) }}</p>
-    <p>
-        {{ form.senha.label }}
-        {{ form.senha(size=40)}}
-    </p>
-    <p> {{form.enviar()}}</p>
+    <div class="mb-3">
+      {{ form.usuario.label(class="form-label") }}
+      {{ form.usuario(class="form-control", placeholder="Digite seu usuário") }}
+      {% for error in form.usuario.errors %}
+        <div class="text-danger">{{ error }}</div>
+      {% endfor %}
+    </div>
 
+    <div class="mb-3">
+      {{ form.senha.label(class="form-label") }}
+      {{ form.senha(class="form-control", placeholder="Digite sua senha") }}
+      {% for error in form.senha.errors %}
+        <div class="text-danger">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    <div class="mb-3">
+      {{ form.enviar(class="btn btn-primary") }}
+    </div>
   </form>
+</div>
 {% endblock %}
