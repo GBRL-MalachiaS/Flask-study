@@ -9,15 +9,37 @@
     <h1>Cadastro de usuário</h1>
     <form action="" method="post">
       {{ form.hidden_tag() }}
-      <div>
+      <div class="form-label">
         {{ form.nome.label(class_='form-teste') }}
         {{ form.nome(class_='form-control-teste', placeholder='Digite seu nome de usuário') }}
         {% for error in form.nome.errors %}
           <div>{{ error }}</div>
         {% endfor %}
       </div>
-      <div></div>
-      <div></div>
+      <div>
+        {{ form.email.label(class_='form-teste') }}
+        {{ form.email(class_='form-control-teste', placeholder='Digite o seu e-mail') }}
+        {% for error in form.email.errors %}
+          <div>{{ error }}</div>
+        {% endfor %}
+      </div>
+      <div>
+        {{ form.senha.label(class_='form-teste') }}
+        {{ form.senha(class_='form-control-teste', placeholder='Senha') }}
+        {% for error in form.email.errors %}
+          <div>{{ error }}</div>
+        {% endfor %}
+      </div>
+      <div>
+        {{ form.senha_confirmacao.label(class_='form-teste') }}
+        {{ form.senha_confirmacao(class_='form-control-teste', placeholder='Confirme a senha') }}
+        {% for error in form.email.errors %}
+          <div>{{ error }}</div>
+        {% endfor %}
+      </div>
+      <div>
+        {{form.enviar(class_='btn-enviar')}}
+      </div>
     </form>
   </section>
 {% endblock %}
