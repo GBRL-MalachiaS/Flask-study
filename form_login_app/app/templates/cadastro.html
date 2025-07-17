@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-  Menu
+  Cadastro
 {% endblock %}
 
 {% block content %}
@@ -37,9 +37,7 @@
           <div>{{ error }}</div>
         {% endfor %}
       </div>
-      <div>
-        {{form.enviar(class_='btn-enviar')}}
-      </div>
+      <div>{{ form.enviar(class_='btn-enviar') }}</div>
     </form>
   </section>
 {% endblock %}

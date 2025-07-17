@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro.css') }}" />
+    <title>
+      {% block title %}
+        Meu Site
+      {% endblock %}
+    </title>
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro.css')}}">
-    <title>{% block title %}Meu Site{% endblock %}</title>
-</head>
-
-<body>
+  <body>
     <header>
-        <h1>Bem-vindo ao meu site com Flask!</h1>
-        <hr>
+      <h1>Bem-vindo ao meu site com Flask!</h1>
+      <hr />
     </header>
 
     <main>
-        {# Bloco para renderizar mensagens do flash #}
-        {% with messages = get_flashed_messages() %}
+      {# Bloco para renderizar mensagens do flash #}
+      {% with messages=get_flashed_messages() %}
         {% if messages %}
-        <ul>
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
+          {% for message in messages %}
+            <div class="alert alert-info">{{ message }}</div>
+          {% endfor %}
         {% endif %}
-        {% endwith %}
+      {% endwith %}
 
-        {% block content %}{% endblock %}
+      {% block content %}
+
+      {% endblock %}
     </main>
 
     <footer>
-        <hr>
-        <p>&copy; 2025 - Meu Projeto</p>
+      <hr />
+      <p>&copy; 2025 - Meu Projeto</p>
     </footer>
-</body>
-
+  </body>
 </html>
